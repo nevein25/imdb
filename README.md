@@ -9,7 +9,8 @@ work.
 * User can like or dislike movies.
 * the user can add his favorite movies, actors, and directors.
 
-
+<br/>
+<br/>
 <h3 align="center"> Sign Up Page </h3>
 <img src="https://github.com/nevein25/imdb/blob/master/screenshots/createAccount.png">
 <br/>

@@ -1,0 +1,190 @@
+﻿@model neveinNadeen.Models.IMDb_User
+
+
+<!---->
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+@Html.HiddenFor(c => c.Id)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+
+        body {
+            background-color: rgb(240,240,240); /*gray*/
+        }
+
+        .content {
+            background-color: white;
+        }
+
+        .card {
+            background-color: rgb(240,240,240);
+        }
+
+        .container {
+            position: relative;
+            left: 50px;
+        }
+
+
+        div > img {
+            border: 1px solid black;
+            margin: 6px;
+            position: relative;
+            left: 10%;
+            width: 250px;
+        }
+
+
+        .small-box {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="container" >
+        <div class="row" >
+            <div class="col-1"></div>
+            <div class="col-9 ">
+                <div class="row content" style="height:708px">
+                    <div class="col-7" style="margin-top:20px;">
+                        <table class="table table-borderless">
+                            <tbody>
+                                @if (Model.Image != null)
+                                {
+                                    <tr><td><div width="100" height="250"> <img src="~/images/profiles/@Model.Image" style="width: 150px; height:205px ;margin-left:332px" /></div></td></tr>
+                                }
+                                else
+                                {
+                                    <img src="~/images/profiles/no-user.png" wstyle="width: 150px; height:205px" />
+
+                                }
+                                <tr>
+                                    <td>
+                                        <h4 style="display:inline-block;margin-right:10px;">Name:</h4>
+                                        <span style="display:inline-block;font-size:17px">@Html.DisplayFor(modelItem => modelItem.Fname) @Html.DisplayFor(modelItem => modelItem.Lname)</span>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h4 style="display:inline-block;margin-right:10px;">Age:</h4>
+                                        <span style="display:inline-block;font-size:17px">@Html.DisplayFor(modelItem => modelItem.Age) </span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4 style="display:inline-block;margin-right:10px;">Email:</h4>
+                                        <span style="display:inline-block;font-size:17px">@Html.DisplayFor(modelItem => modelItem.Email) </span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4 style="display:inline-block;margin-right:10px;">Favourit Movie:</h4>
+                                        <span style="display:inline-block;font-size:17px">@Html.DisplayFor(modelItem => modelItem.Movie.Name) </span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4 style="display:inline-block;margin-right:10px;">Favourit Movie:</h4>
+                                        <span style="display:inline-block;font-size:17px">@Html.DisplayFor(modelItem => modelItem.Actor.Fname) @Html.DisplayFor(modelItem => modelItem.Actor.Lname)</span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4 style="display:inline-block;margin-right:10px;">Favourit Movie:</h4>
+                                        <span style="display:inline-block;font-size:17px">@Html.DisplayFor(modelItem => modelItem.Director.Fname) @Html.DisplayFor(modelItem => modelItem.Director.Lname)  </span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button onclick="location.href='@Url.Action("UserProfile", "User", new { @id = @Model.Id }, null)'" class="btn btn-outline-secondary" style="width:40%; background-color:lightgray;">Edit</button>
+                        <button onclick="location.href='@Url.Action("Login", "User")'" class="btn btn-outline-secondary" style="width:40%; background-color:lightgray;">Log Out</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    @*<div class="person card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+
+                @if (Model.Age.HasValue)
+                {
+                    <li class="list-group-item"><span>Name: @Html.DisplayFor(model => model.Fname)  @Html.DisplayFor(model => model.Lname)  </span></li>
+
+                    <li class="list-group-item"><span>Age: @Html.DisplayFor(model => model.Age)  </span></li>
+
+                    <li class="list-group-item"><span>Email: @Html.DisplayFor(model => model.Email)  </span></li>
+
+
+
+                    <li class="list-group-item"><span>Favorite Movie: @Html.DisplayFor(model => model.Movie.Name) </span></li>
+
+                    <li class="list-group-item"><span>Favorite Actor: @Html.DisplayFor(model => model.Actor.Fname) </span></li>
+
+                    <li class="list-group-item"><span>Favorite Director: @Html.DisplayFor(model => model.Director.Fname) </span></li>
+
+                }
+            </ul>
+
+
+        </div>*@
+
+</body>
+</html>
+
+
+
+@*<script>
+
+
+
+    function logout() {
+
+
+        $.ajax({
+
+           //type: "Get",
+            url: "/User/l" ,
+            success: function (response) {
+            
+               // FormsAuthentication.SignOut();
+                Response.Redirect("Login.aspx");
+                Session.Clear();
+            }
+
+
+        })
+
+    }
+</script>*@

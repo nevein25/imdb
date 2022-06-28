@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IMDb_ModelStoreContainer" CdmEntityContainer="IMDb_Entities">
+    <EntitySetMapping Name="Actors">
+      <EntityTypeMapping TypeName="IMDb_Model.Actor">
+        <MappingFragment StoreEntitySet="Actor">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActorMovies">
+      <EntityTypeMapping TypeName="IMDb_Model.ActorMovie">
+        <MappingFragment StoreEntitySet="ActorMovie">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IMDb_Model.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Conntent" ColumnName="Conntent" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Directors">
+      <EntityTypeMapping TypeName="IMDb_Model.Director">
+        <MappingFragment StoreEntitySet="Director">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavActors">
+      <EntityTypeMapping TypeName="IMDb_Model.FavActor">
+        <MappingFragment StoreEntitySet="FavActor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
+          <ScalarProperty Name="A_Id" ColumnName="A_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavDirectors">
+      <EntityTypeMapping TypeName="IMDb_Model.FavDirector">
+        <MappingFragment StoreEntitySet="FavDirector">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
+          <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavMovies">
+      <EntityTypeMapping TypeName="IMDb_Model.FavMovie">
+        <MappingFragment StoreEntitySet="FavMovie">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMDb_User">
+      <EntityTypeMapping TypeName="IMDb_Model.IMDb_User">
+        <MappingFragment StoreEntitySet="IMDb_User">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FavMovie" ColumnName="FavMovie" />
+          <ScalarProperty Name="FavActor" ColumnName="FavActor" />
+          <ScalarProperty Name="FavDirector" ColumnName="FavDirector" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="IMDb_Model.Movie">
+        <MappingFragment StoreEntitySet="Movie">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="D_Id" ColumnName="D_Id" />
+          <ScalarProperty Name="likes" ColumnName="likes" />
+          <ScalarProperty Name="Dislikes" ColumnName="Dislikes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rates">
+      <EntityTypeMapping TypeName="IMDb_Model.Rate">
+        <MappingFragment StoreEntitySet="Rate">
+          <ScalarProperty Name="DisLike" ColumnName="DisLike" />
+          <ScalarProperty Name="Like" ColumnName="Like" />
+          <ScalarProperty Name="U_Id" ColumnName="U_Id" />
+          <ScalarProperty Name="M_Id" ColumnName="M_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

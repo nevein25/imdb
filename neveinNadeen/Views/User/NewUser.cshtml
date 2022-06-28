@@ -1,0 +1,75 @@
+﻿@model neveinNadeen.ViewModels.Auth
+
+
+@{
+    ViewBag.Title = "NewUser";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Styles/newUser.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+
+    <div class="border border-light">
+        @using (Html.BeginForm("NewUser", "User", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <h3>Create account</h3>
+            <div class="form-group">
+                <h6> @Html.Label("First Name", new { @class = "form-label" })</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Fname, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Fname)
+
+            </div>
+            <div class="form-group" hidden>
+
+                @Html.TextBoxFor(l => l.IMDb_User.Role, new { @class = "form-control", @Value = "2", required = "required" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Role)
+
+            </div>
+            <div class="form-group">
+                <h6> @Html.Label("Last Name", new { @class = "form-label" })</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Lname, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Lname)
+            </div>
+
+            <div class="form-group">
+                <h6> @Html.Label("Age", new { @class = "form-label" })</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Age, new { @class = "form-control", type = "number", required = "required" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Age)
+
+            </div>
+            <div class="form-group">
+                <h6> @Html.Label("Email", new { @class = "form-label" }) </h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Email, new { @class = "form-control", type = "email", required = "required" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Email)
+
+            </div>
+            <div class="form-group">
+                <h6>  @Html.Label("Password", new { @class = "form-label" })</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Password, new { @class = "form-control", type = "password", required = "required" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Password)
+
+            </div>
+            <div class="form-group">
+                <h6> @Html.Label("Upload Image", new { @class = "form-label" })</h6>
+
+                <input id="file" name="file" type="file" class="text-danger" />
+
+            </div>
+            <br />
+            <button type="submit" class="btn" > Save </button>
+
+        }
+    </div>
+
+    </body>
+</html>

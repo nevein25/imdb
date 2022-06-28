@@ -1,0 +1,29 @@
+﻿body {
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+}
+.border {
+    width: 350px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 5px
+}
+
+h2 {
+   margin-bottom:33px;
+}
+
+.col-md-3 {
+    padding-top: 5px;
+}
+
+.email, .pass {
+    padding-bottom: 10px;
+}
+
+.col-md-12 {
+    padding-bottom: 10px
+}

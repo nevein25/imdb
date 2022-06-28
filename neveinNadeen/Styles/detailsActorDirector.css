@@ -1,0 +1,58 @@
+﻿
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+
+
+body {
+    background-color: rgb(240,240,240); /*gray*/
+}
+
+.content {
+    background-color: white;
+}
+
+.card {
+    background-color: rgb(240,240,240);
+}
+
+.container {
+    position: relative;
+    left: 22px;
+}
+
+
+div > img {
+    border: 1px;
+    margin: 6px;
+    position: relative;
+    left: 10%;
+    width: 100px;
+    height: 155px;
+}
+
+
+.small-box {
+    color: black;
+    text-decoration: none;
+}
+
+td h4 {
+    display: inline-block;
+    margin-right: 10px;
+}
+.info-type {
+   font-size:20px;
+   font-weight:bold;
+}
+.col-7 {
+    margin-top: 20px;
+}
+
+info{
+    display: inline-block;
+    font-size: 17px
+}

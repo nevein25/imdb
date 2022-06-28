@@ -1,0 +1,24 @@
+﻿
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.border {
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 5px
+}
+
+h6 {
+    padding-top: 13px;
+}
+
+.btn {
+    background-color: rgb(240, 193, 75);
+    width: 60px;
+}
+

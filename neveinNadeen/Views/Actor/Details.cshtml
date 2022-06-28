@@ -1,0 +1,130 @@
+﻿@model neveinNadeen.ViewModels.ActorMovieDirector
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link href="~/Styles/detailsActorDirector.css" rel="stylesheet"/>
+
+</head>
+
+
+<body>
+    @{
+        string name = "";
+
+    }
+    <div class="container" >
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-9 ">
+                <div class="row content" >
+                    <div class="col-7">
+                        <table class="table table-borderless">
+                            <tbody>
+                                @foreach (var item in Model.Actor)
+                                {
+                                    <tr><td><div width="100" height="250"> <img class"main-img" src="~/images/actors/@item.Image" style="width: 150px; height:205px ;margin-left:140px"/></div></td></tr>
+                                    <tr>
+                                        <td>
+                                            <span class="info-type">Name:</span>
+                                            <span class="info">@Html.DisplayFor(modelItem => item.Fname) @Html.DisplayFor(modelItem => item.Lname)</span>
+                                            
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span class="info-type">Age:</span>
+                                            <span class="info">@Html.DisplayFor(modelItem => item.Age) </span>
+                                         
+                                        </td>
+                                    </tr>
+                                }
+                                <tr><td><span class="info-type">Filmography: </span></td></tr>
+                                <tr style="display:flex;flex-direction:row;flex-wrap:wrap;">
+                                    @foreach (var item in Model.Movie)
+                                    {
+                                        name = @Html.DisplayFor(modelItem => item.Name).ToString();
+
+                                    <td>
+                                        <div class="card" style="width: 150px; height:215px">
+                                            <img src="~/images/movies/@item.Image" style="" />
+                                            <div class="card-body text-center">
+                                                <div class="small-box" style="margin-top:-15px;">
+                                                <h6>@Html.ActionLink(name, "Details", "Movie", new { id = item.Id }, new { style = "text-decoration:none;width:min-width; color: black;padding:7px;" })</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    }
+
+                                </tr>
+
+                                @*<tr><td><button>@Html.ActionLink("Search For Actor", "Index", "Actor", new { style = "text-decoration:none; color: black;padding:5px" })</button></td></tr>*@
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-4" style="margin-top:40px" >
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-title">IMDB News<hr /></p>
+
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner" style="font-size:larger;">
+                                            <div class="carousel-item active">
+                                                <p>New movies were added</p>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <p>Doctor Strange in the Multiverse of Madness (2022)</p>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <p>The Bad Guys (2022)</p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-title">Share this page</p>
+                                    <input type="button" value="Copy Url" onclick="Copy();" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
+<script>
+    function Copy() {
+        let url = document.location.href
+
+        navigator.clipboard.writeText(url).then(function () {
+            console.log('Copied!');
+        }, function () {
+            console.log('Copy error')
+        });
+
+    }
+</script>

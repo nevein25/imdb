@@ -1,0 +1,345 @@
+﻿@model neveinNadeen.ViewModels.ActorMovieDirector
+@{
+    ViewBag.Title = "Movie Details";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+    <style>
+        body {
+            background-color: rgb(240,240,240);
+        }
+
+        .container {
+            background-color: white;
+            max-width:842px;
+         
+        }
+        h1 > img {
+            width: 228px;
+            height: 315px
+        }
+        .table{
+            width:700px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <br />
+    <br />
+    @{
+        string actorname = "";
+        string directorname = "";
+
+
+    }
+   
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            @foreach (var item in Model.Movie)
+            {
+                <h1>
+
+                    <img src="~/images/movies/@item.Image"  />
+                </h1>
+               
+                <h2 style="padding-top:10px;padding-bottom:20px;">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </h2>
+            }
+        </div>
+
+        @* ################################################################################### *@
+        <div class="col-4" >
+            <form id="likeBtn">
+                <div>
+                    @foreach (var item in Model.Movie)
+                    {
+                        <table class="dl-horizontal">
+
+
+                            <tr>
+                                <td>
+
+                                    <div>
+
+                                        <button class="btn btn-warning" type="button" id="like" onclick="likeMovie(@item.Id)" disabled>Like</button>
+                                        <button class="btn btn-dark" disabled id="likeResult">
+                                            @Html.DisplayFor(i => item.likes)
+                                        </button>
+
+
+                                        <button class="btn btn-warning" type="button" id="dislike" onclick="dislikeMovie(@item.Id)" disabled>DisLike</button>
+
+                                        <button class="btn btn-dark" disabled id="dislikeResult">
+                                            @Html.DisplayFor(i => item.Dislikes)
+                                        </button>
+
+                                    </div>
+                                    <div class="alert alert-success" style="display:none;">
+                                        <strong>liked </strong>
+                                    </div>
+                                    <div class="alert alert-danger" style="display:none;">
+                                        <strong>disliked </strong>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    }
+                </div>
+            </form>
+        </div>
+
+        <br />
+        <br />
+        @*#####################################################*@
+        <div class="row ">
+            <div class="col-7">
+                <table class="table">
+                    <tbody>
+                        <tr style="display: flex; flex-direction: row;flex-wrap: wrap; margin-bottom:10px">
+                            <th scope="row" class="table-secondary">Actors</th>
+                            @foreach (var item in Model.Actor)
+                            {
+                                actorname = @Html.DisplayFor(modelItem => item.Fname).ToString() + " " + @Html.DisplayFor(modelItem => item.Lname).ToString();
+
+
+                                <td>
+                                    <span style="color:black">
+                                        @Html.ActionLink(actorname, "Details", "Actor", new { id = item.Id }, new { style = "text-decoration:none;width:min-width; color: black;padding:7px;margin:5px;" })
+                                        @* @Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.lname)*@
+                                    </span>
+                                </td>
+                            }
+                        </tr>
+
+                        <tr style="display: flex; flex-direction: row;flex-wrap: wrap;">
+                            <th scope="row" class="table-secondary">Director</th>
+
+                            @foreach (var item in Model.Director)
+                            {
+                               
+                                    directorname = @Html.DisplayFor(modelItem => item.Fname).ToString() + " " + @Html.DisplayFor(modelItem => item.Lname).ToString();
+                                   
+
+
+                                    <td>
+                                        <span style="color:black">
+                                            @Html.ActionLink(directorname, "Details", "Director", new { id = item.Id }, new { style = "text-decoration:none;width:min-width; color: black;padding:7px;margin:5px;" })
+                                            @* @Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.lname)*@
+                                        </span>
+                                    </td>
+                                    }
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+            @*##############################################################Comen#################################### *@
+            <div class="row" style="margin-bottom:10px;">
+               
+                <div class="col-7" >
+                    @foreach (var item in Model.Movie)
+                    {
+                        <div class="panel-footer">
+                            <button type="button" class="btn btn-dark Comment" data-id="@item.Id" value="Comment" style="margin-bottom:5px;" >
+                              Display Comments
+                            </button>
+
+                        </div>
+                        <div id="@string.Format("{0}_{1}","commentsBlock", item.Id)" style="border: 1px solid #f1eaea; background-color: #eaf2ff; width:645px;">
+
+                            <div class="AddComment" style="margin-left: 30%;  margin-bottom: 5px; margin-top: 8px;">
+                                <input type="text" id="@string.Format("{0}_{1}", "comment", item.Id)" class="form-control" placeholder="Add a Comment ..." style="display: inline; height:40px; " />
+                                <button type="button" class="btn btn-dark addComment" data-id="@item.Id" style="height:40px;margin-top:-6px;">Comment</button>
+                                @*@ValidationMessageFor()*@
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+
+
+
+@section Scripts
+{
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")*@
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+
+            //Click Comment
+            $('.Comment').on('click', function () {
+
+                var id = $(this).attr("data-id");
+                var allCommentsArea = $('<div>').addClass('allComments_' + id);
+
+                //function that allow us to get all comments related to movie id
+                $.ajax({
+
+                    type: 'GET',
+                    url: '@Url.Action("GetComments", "Comment")',
+                    data: { movieId: id },
+                    success: function (response) {
+
+                        if ($('div').hasClass('allComments_' + id + ''))
+                        {
+                            $('div[class=allComments_' + id + ']').remove();
+                        }
+                        //console.log(response);
+
+
+                        allCommentsArea.html(response);
+                        allCommentsArea.prependTo('#commentsBlock_' + id);
+
+
+                    },
+                    error: function (response) {
+                        alert('Sorry: Comments cannot be loaded !');
+                    }
+
+
+                })
+
+            });
+
+            //Add New Comment
+            $('.addComment').on('click', function () {
+
+                var movieId = $(this).attr('data-id');
+                var commentMsg = $('#comment_' + movieId).val();
+                var dateTimeNow = new Date();
+
+                //alert('Hello');
+                var comment = {
+                    Conntent: commentMsg, //from vm
+                    Date: dateTimeNow.toLocaleString()
+                };
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '@Url.Action("AddComment", "Comment")',
+                    data: { comment, movieId },
+                    success: function (response) {
+
+                        $('div[class=allComments_' + movieId + ']').remove();
+
+                        var allCommentsArea = $('<div>').addClass('allComments_' + movieId);
+                        allCommentsArea.html(response);
+
+                        allCommentsArea.prependTo('#commentsBlock_' + movieId);
+
+                    },
+                    error: function (response) {
+                        alert('Sorry: Something Wrong');
+                    }
+
+                });
+
+            });
+
+            jQuery("time.timeago").timeago();
+
+        });
+
+        @*######################################like dislike##########################*@
+
+        //do not disable when refresh
+        $("#like").attr("disabled", false);
+        $("#dislike").attr("disabled", false);
+
+        function likeMovie(id) {
+
+
+            $.ajax({
+
+                type: "Get",
+                url: "/Movie/MovieLikes/" + id,
+                success: function (response) {
+                    $("#likeResult").empty();//clear likes
+                    $("#likeResult").append(response.result);//write it with the new value
+
+                    if (response.result) {
+
+                        //alert("liked") //not used
+
+                        //disable buttons after like
+                        $("#like").attr("disabled", true);
+                        $("#dislike").attr("disabled", true);
+                        //animation
+                        $(".alert-success").show(1000);
+                        $(".alert-success").hide(1000);
+                    } else {
+                        alert("nooooo")
+
+                    }
+
+                }
+
+            })
+
+        }
+        function dislikeMovie(id) {
+            $.ajax({
+                type: "Get",
+                url: "/Movie/MovieDislikes/" + id,
+                success: function (response) {
+
+                    $("#dislikeResult").empty(); //clear dislikes
+                    $("#dislikeResult").append(response.result); //write it with the new value
+
+                    if (response.result) {
+                        //disable buttons after dislike
+                        $("#like").attr("disabled", true);
+                        $("#dislike").attr("disabled", true);
+
+                        $(".alert-danger").show(1000);
+                        $(".alert-danger").hide(1000);
+
+                    } else {
+                        alert("nooooo")
+
+                    }
+                }
+            })
+        }
+    </script>
+
+
+}

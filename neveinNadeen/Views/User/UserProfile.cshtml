@@ -1,0 +1,108 @@
+﻿@model neveinNadeen.ViewModels.ProfileViewModel
+
+
+@{
+    ViewBag.Title = "Edit User profile details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Styles/userProfile.css" rel="stylesheet" />
+</head>
+<body>
+
+    @using (Html.BeginForm("UserProfile", "User", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+
+        <div  class="border border-light">
+            <div class="form-group">
+                @if (Model.IMDb_User.Image != null)
+                {
+                    <div class="image-size">
+                        <img src="~/images/profiles/@Model.IMDb_User.Image" alt="error" class="img-responsive image-center" width="100" height="100" />
+                    </div>
+                }
+                else
+                {
+                    <img src="~/images/profiles/no-user.png" width="100" height="100" />
+
+                }
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IMDb_User.Image)
+                <div>
+                    <input id="file" name="file" type="file" class="text-danger" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h6>   @Html.Label("First Name")</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Fname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Fname)
+
+            </div>
+            <div class="form-group">
+                <h6>   @Html.Label("Last Name")</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Lname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Lname)
+            </div>
+
+            <div class="form-group">
+                <h6>   @Html.Label("Age")</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Age, new { @class = "form-control", type = "number" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Age)
+
+            </div>
+            <div class="form-group">
+                <h6>   @Html.Label("Email")</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Email, new { @class = "form-control", type = "email" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Email)
+
+            </div>
+            <div class="form-group">
+                <h6>   @Html.Label("Password")</h6>
+                @Html.TextBoxFor(l => l.IMDb_User.Password, new { @class = "form-control", type = "password" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Password)
+
+            </div>
+
+
+            <div class="form-group">
+
+                <h6>   @Html.Label("Favourit Movies")</h6>
+                @Html.DropDownListFor(i => i.IMDb_User.FavMovie, new SelectList(Model.Movie, "id", "name"), "select your favorite movie", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.FavMovie)
+
+            </div>
+
+            <div class="form-group">
+
+                <h6>   @Html.Label("Favourit Actor")</h6>
+
+                @Html.DropDownListFor(i => i.IMDb_User.FavActor, new SelectList(Model.Actor, "id", "fname"), "select your favorite movie", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Password)
+
+            </div>
+            <div class="form-group">
+
+                <h6>   @Html.Label("Favourit Director")</h6>
+
+                @Html.DropDownListFor(i => i.IMDb_User.FavDirector, new SelectList(Model.Director, "id", "fname"), "select your favorite movie", new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.IMDb_User.Password)
+
+            </div>
+
+            <button type="submit" class="btn btn-dark" >Save</button>
+
+
+
+        </div>
+    }
+
+</body>
+</html>

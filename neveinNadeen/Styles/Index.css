@@ -1,0 +1,26 @@
+﻿.form-inline {
+    margin-bottom: 20px;
+}
+
+    .form-inline div {
+        display: flex;
+        flex-direction: row;
+    }
+
+#searching {
+    width: 500px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.btn-outline-warning {
+    width: 100px;
+    height: 40px
+}
+
+.name a {
+    text-decoration: none;
+    color: black;
+    padding: 7px;
+    margin: 5px;
+}
